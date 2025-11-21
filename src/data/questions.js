@@ -1,22 +1,375 @@
-export const questions = {
-  1: [
-    {
-      question: "<View ______> </View>",
-      options: ["style={styles.box}", "className='box'", "css={box}"],
-      answer: "style={styles.box}",
-    },
-    {
-      question: "<Text>_____</Text>",
-      options: ["Hello World", "{Hello World}", "`Hello World`"],
-      answer: "Hello World",
-    },
-  ],
+export default [
+  {
+    id: 1,
+    title: "1",
+    questions: [
+      {
+        text: `return <_____ style={{ flex: 1 }}></_____;>`,
+        options: ["Div", "View", "Box", "Container"],
+        answer: "View",
+      },
+      {
+        text: `<_____>
+          {items.map(renderItem)}
+          </_____>`,
+        options: ["Scroll", "ScrollContainer", "ScrollView", "ViewScroll"],
+          answer: "ScrollView",
+      },
+      {
+        text: `<_____ style={{ flex: 1 }}>`,
+        options: ["SafeArea", "SafeAreaView", "NotchView", "ProtectedView"],
+        answer: "SafeAreaView"
+      },
+      {
+        text: `<ScrollView horizontal={_____}>`,
+        options: [`"true"`, `{true}`, `True`, `enable`],
+        answer: `{true}`
+      },
+      {
+        text: `<View style={{ justifyContent: "center", _____: "center" }}>`,
+        options: ["screenAlign", "textAlign", "alignItems", "alignContent"],
+        answer: "alignItems"
+      },
+      {
+        text: `<ScrollView showsVerticalScrollIndicator={_____}>`,
+        options: [`"false"`, "false", "0", "off"],
+        answer: "false"
+      },
+      {
+        text: `import { SafeAreaView } from "_____";`,
+        options: ["react", "react-navigation", "expo", "react-native"],
+        answer: "react-native"
+      },
+      {
+        text: `<_____ style={{ padding: 20 }}>`,
+        options: ["Box", "Section", "View", "ContainerView"],
+        answer: "View"
+      }
+    ],
+  },
 
-  2: [
-    {
-      question: "O que JSX retorna?",
-      options: ["HTML", "Código nativo", "Funções que criam elementos"],
-      answer: "Funções que criam elementos",
-    },
-  ],
-};
+  {
+    id: 2,
+    title: "2",
+    questions: [
+      {
+        text: "Componente usado para exibir textos:_____.",
+        options: [
+          "Text",
+          "Button",
+          "Pressable",
+          "View"
+        ],
+        answer: "Text",
+      },
+      {
+        text: "Para permitir que o usuário digite informações, utilizamos o _____.",
+        options: [
+          "TouchableOpacity",
+          "Text",
+          "TextInput",
+          "Placeholder"
+        ],
+        answer: "TextInput",
+      },
+      {
+        text: "Qual o componente que não exibe nenhum feedback visual ao ser tocado?",
+        options: [
+          "Button",
+          "TouchableOpacity",
+          "TouchableWithoutFeedback",
+          "TextInput"
+        ],
+        answer: "TouchableWithoutFeedback",
+      },
+      {
+        text: "<TextInput value={nome} onChangeText={_____}/>",
+        options: [
+          "nome",
+          "setNome",
+          "onNome",
+          "change"
+        ],
+        answer: "setNome",
+      },
+      {
+        text: "<TouchableWithoutFeedback onPress={}>",
+        options: [
+          "() => {}",
+          "'click'",
+          "{click()}",
+          "press()"
+        ],
+        answer: "() => {}",
+      },
+      {
+        text: "Ideal para personalizar pressões longas, curtas e eventos de toque.",
+        options: [
+          "Pressable",
+          "TouchableWithoutFeedback",
+          "Button",
+          "TextInput"
+        ],
+        answer: "Pressable",
+      },
+      {
+        text: "Para criar um campo onde o usuário possa escrever um nome, senha ou email, usamos o _____.",
+        options: [
+          "Button",
+          "Pressable",
+          "TextInput",
+          "TouchableOpacity"
+        ],
+        answer: "TextInput",
+      },
+      {
+        text: "<TextInput placeholder='Digite...' _____ />",
+        options: [
+          "placeholderColor",
+          "placeholderStyle",
+          "style={{}}",
+          "color='gray'"
+        ],
+        answer: "style={{}}",
+      },
+      {
+        text: "<Button title='Salvar' onPress={_____} />",
+        options: [
+          "save",
+          "() => save()",
+          "save()",
+          "onSave()"
+        ],
+        answer: "() => save()",
+      },
+      {
+        text: "<Pressable style={({ pressed }) => ({ opacity: pressed ? 0.5 : _____ })}>",
+        options: [
+          "1",
+          "2",
+          "0",
+          "false"
+        ],
+        answer: "1",
+      },
+    ],
+  },
+
+  {
+    id: 3,
+    title: "3",
+    questions: [
+      {
+        text: `const styles = StyleSheet._____({
+  container: { flex: 1 }
+});`,
+        options: [
+          "make",
+          "create",
+          "style",
+          "new"
+        ],
+        answer: "create",
+      },
+      {
+        text: "Estilos criados diretamente dentro do componente, usando {}, são chamados de _____. ",
+        options: [
+          "inline",
+          "externo",
+          "global",
+          "styled"
+        ],
+        answer: "inline",
+      },
+      {
+        text: "<View style={styles._____}>",
+        options: [
+          "class",
+          "container",
+          "view",
+          "box"
+        ],
+        answer: "container",
+      },
+      {
+        text: "<Text style={{ color: '_____' }}>Olá</Text>",
+        options: [
+          "blue",
+          "'#blue'",
+          "(blue)",
+          "{blue}"
+        ],
+        answer: "blue",
+      },
+      {
+        text: "Para organizar vários estilos de forma separada e reaproveitável, utilizamos o _____. ",
+        options: [
+          "class",
+          "inline",
+          "TextInput",
+          "StyleSheet"
+        ],
+        answer: "StyleSheet",
+      },
+      {
+        text: "O tipo de estilo que geralmente deixa o código mais limpo e fácil de manter é o _____.  ",
+        options: [
+          "StyleSheet",
+          "inline",
+          "Button",
+          "styled"
+        ],
+        answer: "StyleSheet ",
+      },
+      {
+        text: "Quando for aplicar rapidamente um estilo simples sem criar um arquivo separado, pode-se usar estilo _____.  ",
+        options: [
+          "class",
+          "Pressable",
+          "StyleSheet",
+          "inline"
+        ],
+        answer: "inline",
+      },
+      {
+        text: "<View style={[styles.box, { opacity: _____ }]} />",
+        options: [
+          "1",
+          "'1'",
+          "100",
+          "true"
+        ],
+        answer: "1",
+      },
+      {
+        text: "<Text style={{ textAlign: '_____' }}>",
+        options: [
+          "middle",
+          "center",
+          "align",
+          "mid"
+        ],
+        answer: "center",
+      },
+      {
+        text: "Para criar estilos com StyleSheet, usamos o método _____.  ",
+        options: [
+          "StyleSheet.create",
+          "build",
+          "StyleSheet.build ",
+          "StyleSheet.make"
+        ],
+        answer: "StyleSheet.create",
+      },
+    ],
+  },
+
+  {
+    id: 4,
+    title: "4",
+    questions: [
+      {
+        text: "Para criar navegação em stack, se usa o _____.",
+        options: [
+          "createBottomTabNavigator",
+          "createStackNavigator",
+          "createDrawerNavigator",
+          "navigator"
+        ],
+        answer: "createStackNavigator",
+      },
+      {
+        text: "const Stack = createNativeStackNavigator(_____);",
+        options: [
+          "{}",
+          "()",
+          "[]",
+          "null"
+        ],
+        answer: "()",
+      },
+      {
+        text: "Para navegar para outra tela no React Navigation, utilizamos o método _____. ",
+        options: [
+          "navigation.go",
+          "navigation.run",
+          "navigation.open",
+          "navigation.navigate"
+        ],
+        answer: "navigation.navigate",
+      },
+      {
+        text: "A navegação lateral, que abre um menu tipo “gaveta”, utiliza o _____. ",
+        options: [
+          "createDrawerNavigator",
+          "Pressable",
+          "createStackNavigator",
+          "menuNavigator"
+        ],
+        answer: "createDrawerNavigator",
+      },
+      {
+        text: `<NavigationContainer>
+  <_____>`,
+        options: [
+          "Stack.Screen",
+          "Stack.Navigator",
+          "Navigation.Screen",
+          "App.Stack"
+        ],
+        answer: "Stack.Navigator",
+      },
+      {
+        text: "A navegação em abas na parte inferior do app é feita com o _____. ",
+        options: [
+          "run",
+          "createBottomTabNavigator",
+          "createStackNavigator",
+          "TextInput"
+        ],
+        answer: "createBottomTabNavigator",
+      },
+      {
+        text: "Para envolver toda a aplicação e habilitar a navegação, é necessário usar o componente _____.",
+        options: [
+          "NavigationWrapper",
+          "appContainer",
+          "NavigationContainer",
+          "AppContainer"
+        ],
+        answer: "NavigationContainer",
+      },
+      {
+        text: "<Stack.Screen name='Home' component={_____} />",
+        options: [
+          "'HomeScreen'",
+          "HomeScreen",
+          "(HomeScreen)",
+          "Home.Screen"
+        ],
+        answer: "HomeScreen",
+      },
+      {
+        text: "const { id } = route._____;",
+        options: [
+          "params",
+          "data",
+          "query",
+          "props"
+        ],
+        answer: "params",
+      },
+      {
+        text: `<NavigationContainer>
+  <Stack._____>`,
+        options: [
+          "Screen",
+          "Screens",
+          "Navigator",
+          "Route"
+        ],
+        answer: "Navigator",
+      },
+    ],
+  },
+];

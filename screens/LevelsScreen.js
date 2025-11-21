@@ -1,39 +1,131 @@
-import { View, ScrollView, Text, TouchableOpacity } from "react-native";
-
-const levels = [
-  { id: 1, title: "Componentes Básicos" },
-  { id: 2, title: "JSX" },
-  { id: 3, title: "Props" },
-  { id: 4, title: "State" },
-  { id: 5, title: "Hooks" },
-  { id: 6, title: "Estilos" },
-  { id: 7, title: "Eventos" },
-  { id: 8, title: "Navegação" },
-  { id: 9, title: "APIs Nativas" },
-  { id: 10, title: "API Rest" },
-];
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Dimensions, Image } from "react-native";
+import questions from "../src/data/questions";
 
 export default function LevelsScreen({ navigation }) {
-  return (
-    <ScrollView contentContainerStyle={{ padding: 20 }}>
-      <Text style={{ fontSize: 26, fontWeight: "bold", marginBottom: 20 }}>
-        Fases
-      </Text>
+  const screenWidth = Dimensions.get("window").width;
+  const numColumns = 4;
+  const spacing = 15; 
+  const paddingHorizontal = 35; 
+  const cardSize = (screenWidth - paddingHorizontal * 2 - spacing * (numColumns - 1)) / numColumns;
 
-      {levels.map((lvl) => (
+  return (
+    <ScrollView contentContainerStyle={[ styles.container, { flexGrow: 1 }]}>
+      <View style={styles.header}>
+        <Text style={styles.title}>Níveis</Text>
         <TouchableOpacity
-          key={lvl.id}
-          style={{
-            backgroundColor: "#eee",
-            padding: 15,
-            borderRadius: 10,
-            marginBottom: 10,
-          }}
-          onPress={() => navigation.navigate("Quiz", { levelId: lvl.id })}
+          style={styles.backButton}
+          onPress={() => navigation.goBack()}
         >
-          <Text style={{ fontSize: 18 }}>{lvl.title}</Text>
+          <Image 
+            source={require('../assets/home.png')}
+            style={{ width: 40, height: 40 }}
+            resizeMode="contain"
+          />
         </TouchableOpacity>
-      ))}
+      </View>
+
+      <View style={styles.cardsContainer}>
+        <View style={styles.grid}>
+          {questions.slice(0, 8).map((phase, index) => (
+            <TouchableOpacity
+              key={phase.id || index}
+              style={[
+                styles.cardWrapper,
+                {
+                  width: cardSize,
+                  height: cardSize,
+                  marginRight: (index + 1) % numColumns === 0 ? 0 : spacing,
+                  marginBottom: spacing,
+                },
+              ]}
+              onPress={() =>
+                navigation.navigate("Quiz", {
+                  questions: phase.questions,
+                  phaseTitle: phase.title,
+                })
+              }
+            >
+              <View style={styles.card}>
+                <Text style={styles.cardText}>{phase.title}</Text>
+              </View>
+            </TouchableOpacity>
+          ))}
+        </View>
+      </View>
     </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 20,
+    paddingTop: 20,
+    backgroundColor: '#015958',
+  },
+  header: {
+    flexDirection: "row",
+    width: "100%",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 20,
+  },
+  title: {
+    fontSize: 42, 
+    fontWeight: "900",
+    color: '#fff',
+    letterSpacing: 1.5, 
+    textShadowColor: 'rgba(0, 0, 0, 0.3)', 
+    textShadowOffset: { width: 2, height: 2 },
+    textShadowRadius: 4,
+  },
+  backButton: {
+    backgroundColor: "#015958",
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderRadius: 16, 
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 6,  
+  },
+  cardsContainer: {
+    backgroundColor: "#0CABA89B",
+    marginTop: 35,
+    padding: 15,
+    borderRadius: 20,
+  },
+  grid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+  },
+  cardWrapper: {
+    borderRadius: 14,
+    overflow: 'hidden',
+    backgroundColor: '#0FC2C0', 
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 5, 
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  card: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  cardText: {
+    fontSize: 35,
+    color: "#fff",
+    textAlign: "center",
+    fontWeight: "900",
+    letterSpacing: 1.5, 
+    textShadowColor: 'rgba(0, 0, 0, 0.3)', 
+    textShadowOffset: { width: 2, height: 2 },
+    textShadowRadius: 4,
+  },
+});
