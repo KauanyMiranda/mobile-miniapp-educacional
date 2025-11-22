@@ -372,4 +372,222 @@ export default [
       },
     ],
   },
+
+
+
+  {
+  id: 5,
+  title: "5",
+  questions: [
+    {
+      text: "Para criar pilhas de telas (navegação em stack), usamos o _____.",
+      options: [
+        "createStackNavigator",
+        "createBottomTabNavigator",
+        "createDrawerNavigator"
+      ],
+      answer: "createStackNavigator",
+    },
+    {
+      text: "{Items.map(item => <Text key={item.id}>{_____}</Text>)}",
+      options: [
+        "item",
+        "item.name",
+        "{item.nome}",
+        "{name}"
+      ],
+      answer: "item.name",
+    },
+    {
+      text: "Para navegar para outra tela no React Navigation, utilizamos o método _____.",
+      options: [
+        "navigation.navigate",
+        "navigation.open",
+        "navigation.run"
+      ],
+      answer: "navigation.navigate",
+    },
+    {
+      text: "<Text{props._____}</Text>",
+      options: [
+        "children",
+        "text",
+        "label",
+        "name"
+      ],
+      answer: "children",
+    },
+    {
+      text: "A navegação em abas na parte inferior do app é feita com o _____.",
+      options: [
+        "createBottomTabNavigator",
+        "createStackNavigator",
+        "TextInput"
+      ],
+      answer: "createBottomTabNavigator",
+    },
+    {
+      text: "<Button onPress={() => _____('clicou')} />",
+      options: [
+        "createStackNavigator",
+        "createBottomTabNavigator",
+        "createDrawerNavigator"
+      ],
+      answer: "createStackNavigator",
+    },
+    {
+      text: "A navegação lateral, que abre um menu tipo “gaveta”, utiliza o _____.",
+      options: [
+        "createDrawerNavigator",
+        "createStackNavigator",
+        "Pressable"
+      ],
+      answer: "createDrawerNavigator",
+    },
+    {
+      text: `<_____>
+        <Text>A</Text>
+        <Text>B</Text>
+      <_____>`,
+      options: [
+        "Fragment",
+        "<>",
+        "[]",
+        "{}"
+      ],
+      answer: "<>",
+    },
+    {
+      text: "Para envolver toda a aplicação e habilitar a navegação, é necessário usar o componente _____.",
+      options: [
+        "NavigationContainer",
+        "AppContainer",
+        "NavigationWrapper"
+      ],
+      answer: "NavigationContainer",
+    },
+    {
+      text: "return ( <_____><Text>Olá</Text></_____> )",
+      options: [
+        "Text",
+        "View",
+        "Box",
+        "Container"
+      ],
+      answer: "View",
+    },
+  ],
+},
+
+
+
+{
+  id: 6,
+  title: "6",
+  questions: [
+    {
+      text: "O hook usado para armazenar e atualizar valores dentro do componente é o _____.",
+      options: [
+        "useState",
+        "useEffect",
+        "useMemo"
+      ],
+      answer: "useState",
+    },
+    {
+      text: "const [count, setCount] = _____(0)",
+      options: [
+        "State",
+        "useState",
+        "createState",
+        "newState"
+      ],
+      answer: "useState",
+    },
+    {
+      text: "O hook utilizado para executar efeitos colaterais, como buscar dados ou reagir a mudanças, é o _____.",
+      options: [
+        "useEffect",
+        "useState",
+        "useId"
+      ],
+      answer: "useEffect",
+    },
+    {
+      text: `useEffect(() => {
+        console.log("Start")
+        }, ______)`,
+      options: [
+        "0",
+        "null",
+        "[]",
+        "{}"
+      ],
+      answer: "[]",
+    },
+    {
+      text: "O useState retorna um valor e uma função, normalmente chamada de _____.",
+      options: [
+        "setAlgumaCoisa",
+        "updateValue",
+        "change"
+      ],
+      answer: "setAlgumaCoisa",
+    },
+    {
+      text: `useEffect(() => {
+        console.log(value)
+        }, [_____])`,
+      options: [
+        "value",
+        "'value'",
+        "{value}",
+        "[value]"
+      ],
+      answer: "value",
+    },
+    {
+      text: "Para executar um código apenas uma vez quando o componente monta, usamos useEffect com o array de dependências _____.",
+      options: [
+        "[]",
+        "[value]",
+        "[null]"
+      ],
+      answer: "[]",
+    },
+    {
+      text: `useEffect(() => {
+        fetchData()
+        }, [_____])`,
+      options: [
+        "fetchData",
+        "() => fetchData()",
+        "data",
+        "[]"
+      ],
+      answer: "[]",
+    },
+    {
+      text: "Quando queremos que o useEffect execute toda vez que uma variável mudar, colocamos essa variável no _____.",
+      options: [
+        "array de dependências",
+        "return",
+        "useState"
+      ],
+      answer: "array de dependências",
+    },
+    {
+      text: "const [open, setOpen] = useSate(_____)",
+      options: [
+        "false",
+        "0",
+        "false",
+        "null"
+      ],
+      answer: "false",
+    },
+  ],
+}
+
+
 ];
