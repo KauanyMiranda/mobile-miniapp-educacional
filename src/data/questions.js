@@ -1,4 +1,4 @@
-export default [
+const questions = [
   {
     id: 1,
     title: "1",
@@ -7,6 +7,7 @@ export default [
         text: `return <_____ style={{ flex: 1 }}></_____;>`,
         options: ["Div", "View", "Box", "Container"],
         answer: "View",
+        explanation: "Ta errado fi"
       },
       {
         text: `<_____>
@@ -373,471 +374,464 @@ export default [
     ],
   },
 
-
+  {
+    id: 5,
+    title: "5",
+    questions: [
+      {
+        text: "Para criar pilhas de telas (navegação em stack), usamos o _____.",
+        options: [
+          "createStackNavigator",
+          "createBottomTabNavigator",
+          "createDrawerNavigator",
+          "stackNavigator"
+        ],
+        answer: "createStackNavigator",
+      },
+      {
+        text: "{Items.map(item => <Text key={item.id}>{_____}</Text>)}",
+        options: [
+          "item",
+          "item.name",
+          "{item.nome}",
+          "{name}"
+        ],
+        answer: "item.name",
+      },
+      {
+        text: "Para navegar para outra tela no React Navigation, utilizamos o método _____.",
+        options: [
+          "navigation.navigate",
+          "navigation.open",
+          "navigation.run",
+          "navigation.push"
+        ],
+        answer: "navigation.navigate",
+      },
+      {
+        text: "<Text{props._____}</Text>",
+        options: [
+          "children",
+          "text",
+          "label",
+          "name"
+        ],
+        answer: "children",
+      },
+      {
+        text: "A navegação em abas na parte inferior do app é feita com o _____.",
+        options: [
+          "createBottomTabNavigator",
+          "createStackNavigator",
+          "TextInput",
+          "tabsNavigator"
+        ],
+        answer: "createBottomTabNavigator",
+      },
+      {
+        text: "<Button onPress={() => _____('clicou')} />",
+        options: [
+          "createStackNavigator",
+          "createBottomTabNavigator",
+          "createDrawerNavigator",
+          "navigate"
+        ],
+        answer: "createStackNavigator",
+      },
+      {
+        text: "A navegação lateral, que abre um menu tipo “gaveta”, utiliza o _____.",
+        options: [
+          "createDrawerNavigator",
+          "createStackNavigator",
+          "Pressable",
+          "drawerNavigator"
+        ],
+        answer: "createDrawerNavigator",
+      },
+      {
+        text: `<_____>
+          <Text>A</Text>
+          <Text>B</Text>
+        <_____>`,
+        options: [
+          "Fragment",
+          "<>",
+          "[]",
+          "{}"
+        ],
+        answer: "<>",
+      },
+      {
+        text: "Para envolver toda a aplicação e habilitar a navegação, é necessário usar o componente _____.",
+        options: [
+          "NavigationContainer",
+          "AppContainer",
+          "NavigationWrapper",
+          "RootNavigator"
+        ],
+        answer: "NavigationContainer",
+      },
+      {
+        text: "return ( <_____><Text>Olá</Text></_____> )",
+        options: [
+          "Text",
+          "View",
+          "Box",
+          "Container"
+        ],
+        answer: "View",
+      },
+    ],
+  },
 
   {
-  id: 5,
-  title: "5",
-  questions: [
-    {
-      text: "Para criar pilhas de telas (navegação em stack), usamos o _____.",
-      options: [
-        "createStackNavigator",
-        "createBottomTabNavigator",
-        "createDrawerNavigator",
-        "stackNavigator"
-      ],
-      answer: "createStackNavigator",
-    },
-    {
-      text: "{Items.map(item => <Text key={item.id}>{_____}</Text>)}",
-      options: [
-        "item",
-        "item.name",
-        "{item.nome}",
-        "{name}"
-      ],
-      answer: "item.name",
-    },
-    {
-      text: "Para navegar para outra tela no React Navigation, utilizamos o método _____.",
-      options: [
-        "navigation.navigate",
-        "navigation.open",
-        "navigation.run",
-        "navigation.push"
-      ],
-      answer: "navigation.navigate",
-    },
-    {
-      text: "<Text{props._____}</Text>",
-      options: [
-        "children",
-        "text",
-        "label",
-        "name"
-      ],
-      answer: "children",
-    },
-    {
-      text: "A navegação em abas na parte inferior do app é feita com o _____.",
-      options: [
-        "createBottomTabNavigator",
-        "createStackNavigator",
-        "TextInput",
-        "tabsNavigator"
-      ],
-      answer: "createBottomTabNavigator",
-    },
-    {
-      text: "<Button onPress={() => _____('clicou')} />",
-      options: [
-        "createStackNavigator",
-        "createBottomTabNavigator",
-        "createDrawerNavigator",
-        "navigate"
-      ],
-      answer: "createStackNavigator",
-    },
-    {
-      text: "A navegação lateral, que abre um menu tipo “gaveta”, utiliza o _____.",
-      options: [
-        "createDrawerNavigator",
-        "createStackNavigator",
-        "Pressable",
-        "drawerNavigator"
-      ],
-      answer: "createDrawerNavigator",
-    },
-    {
-      text: `<_____>
-        <Text>A</Text>
-        <Text>B</Text>
-      <_____>`,
-      options: [
-        "Fragment",
-        "<>",
-        "[]",
-        "{}"
-      ],
-      answer: "<>",
-    },
-    {
-      text: "Para envolver toda a aplicação e habilitar a navegação, é necessário usar o componente _____.",
-      options: [
-        "NavigationContainer",
-        "AppContainer",
-        "NavigationWrapper",
-        "RootNavigator"
-      ],
-      answer: "NavigationContainer",
-    },
-    {
-      text: "return ( <_____><Text>Olá</Text></_____> )",
-      options: [
-        "Text",
-        "View",
-        "Box",
-        "Container"
-      ],
-      answer: "View",
-    },
-  ],
-},
+    id: 6,
+    title: "6",
+    questions: [
+      {
+        text: "O hook usado para armazenar e atualizar valores dentro do componente é o _____.",
+        options: [
+          "useState",
+          "useEffect",
+          "useMemo",
+          "useReducer"
+        ],
+        answer: "useState",
+      },
+      {
+        text: "const [count, setCount] = _____(0)",
+        options: [
+          "State",
+          "useState",
+          "createState",
+          "newState"
+        ],
+        answer: "useState",
+      },
+      {
+        text: "O hook utilizado para executar efeitos colaterais, como buscar dados ou reagir a mudanças, é o _____.",
+        options: [
+          "useEffect",
+          "useState",
+          "useId",
+          "useLayoutEffect"
+        ],
+        answer: "useEffect",
+      },
+      {
+        text: `useEffect(() => {
+          console.log("Start")
+          }, ______)`,
+        options: [
+          "0",
+          "null",
+          "[]",
+          "{}"
+        ],
+        answer: "[]",
+      },
+      {
+        text: "O useState retorna um valor e uma função, normalmente chamada de _____.",
+        options: [
+          "setAlgumaCoisa",
+          "updateValue",
+          "change",
+          "modify"
+        ],
+        answer: "setAlgumaCoisa",
+      },
+      {
+        text: `useEffect(() => {
+          console.log(value)
+          }, [_____])`,
+        options: [
+          "value",
+          "'value'",
+          "{value}",
+          "[value]"
+        ],
+        answer: "value",
+      },
+      {
+        text: "Para executar um código apenas uma vez quando o componente monta, usamos useEffect com o array de dependências _____.",
+        options: [
+          "[]",
+          "[value]",
+          "[null]",
+          "[0]"
+        ],
+        answer: "[]",
+      },
+      {
+        text: `useEffect(() => {
+          fetchData()
+          }, [_____])`,
+        options: [
+          "fetchData",
+          "() => fetchData()",
+          "data",
+          "[]"
+        ],
+        answer: "[]",
+      },
+      {
+        text: "Quando queremos que o useEffect execute toda vez que uma variável mudar, colocamos essa variável no _____.",
+        options: [
+          "array de dependências",
+          "return",
+          "useState",
+          "callback"
+        ],
+        answer: "array de dependências",
+      },
+      {
+        text: "const [open, setOpen] = useSate(_____)",
+        options: [
+          "false",
+          "0",
+          "false",
+          "null"
+        ],
+        answer: "false",
+      },
+    ],
+  },
+
+  {
+    id: 7,
+    title: "7",
+    questions: [
+      {
+        text: "O AsyncStorage permite _____ dados no dispositivo do usuário.",
+        options: [
+          "salvar e ler",
+          "enviar para a API",
+          "desenhar elementos",
+          "compilar"
+        ],
+        answer: "salvar e ler",
+      },
+
+      {
+        text: 'awat AsyncStorage.setItem("user", _____)',
+        options: [
+          "user",
+          "{user}",
+          "JSON.stringify(user)",
+          "stringify(user)"
+        ],
+        answer: "JSON.stringify(user)",
+      },
+
+      {
+        text: "Para salvar um valor no AsyncStorage, usamos o método _____.",
+        options: [
+          "setItem",
+          "saveValue",
+          "write",
+          "store"
+        ],
+        answer: "setItem",
+      },
+
+      {
+        text: 'const data = awat AsyncStorage._____("user")',
+        options: [
+          "get",
+          "read",
+          "getItem",
+          "fetch"
+        ],
+        answer: "getItem",
+      },
+      
+      {
+        text: "Para recuperar um valor salvo no AsyncStorage, utilizamos o método _____.",
+        options: [
+          "getItem",
+          "fetch",
+          "restore",
+          "read"
+        ],
+        answer: "getItem",
+      },
+
+      {
+        text: "const obj = JSON._____(data)",
+        options: [
+          "parse",
+          "convert",
+          "json",
+          "toObject"
+        ],
+        answer: "parse",
+      },
+
+      {
+        text: "Os valores armazenados no AsyncStorage precisam estar no formato _____.",
+        options: [
+          "string",
+          "number",
+          "boolean",
+          "array"
+        ],
+        answer: "string",
+      },
+
+      {
+        text: 'import AsyncStorage from "@react-native-async-storage/____"',
+        options: [
+          "async",
+          "storage",
+          "asyncstorage",
+          "local"
+        ],
+        answer: "storage",
+      },
+
+      {
+        text: "Quando queremos apagar uma informação salva no AsyncStorage, utilizamos o _____.",
+        options: [
+          "removeItem",
+          "delete",
+          "clearValue",
+          "dropItem"
+        ],
+        answer: "removeItem",
+      },
+
+      {
+        text: "AsyncStorage._____()",
+        options: [
+          "removeAll",
+          "reset",
+          "clear",
+          "destroy"
+        ],
+        answer: "clear",
+      },
+
+    ],
+  },
+
+  {
+    id: 8,
+    title: "8",
+    questions: [
+      {
+        text: "O método nativo do JavaScript para fazer requisições HTTP é o _____.",
+        options: [
+          "fetch",
+          "axios",
+          "requestJS",
+          "httpRequest"
+        ],
+        answer: "fetch",
+      },
+
+      {
+        text: 'fetch("https://api.com/user").then(res => res._____())',
+        options: [
+          "parse",
+          "json",
+          "get",
+          "toJson"
+        ],
+        answer: "json",
+      },
+
+      {
+        text: "A biblioteca que facilita requisições e já retorna JSON automaticamente é o _____.",
+        options: [
+          "axios",
+          "fetch",
+          "navigator",
+          "httpLib"
+        ],
+        answer: "axios",
+      },
+
+      {
+        text: 'fetch(url, { method:"_____", body: JSON.stringify(obj) })',
+        options: [
+          "SEND",
+          "POST",
+          "SENDPOST",
+          "PUSH"
+        ],
+        answer: "POST",
+      },
+
+      {
+        text: "Com o fetch, para transformar a resposta em JSON, usamos o método _____.",
+        options: [
+          "response.json()",
+          "response.convert()",
+          "response.toJson()",
+          "response.parse()"
+        ],
+        answer: "response.json()",
+      },
+
+      {
+        text: 'headers: {"Content-Type": "application/_____" }',
+        options: [
+          "txt",
+          "json",
+          "js",
+          "data"
+        ],
+        answer: "json",
+      },
+
+      {
+        text: "Com o Axios, o corpo da resposta normalmente fica em _____.",
+        options: [
+          "response.data",
+          "response.body",
+          "response.json",
+          "response.value"
+        ],
+        answer: "response.data",
+      },
+
+      {
+        text: 'axios.get("https://api.com/user").then(res => res._____)',
+        options: [
+          "data",
+          "body",
+          "content",
+          "value"
+        ],
+        answer: "data",
+      },
+
+      {
+        text: "Para fazer uma requisição GET usando Axios, utilizamos o método _____.",
+        options: [
+          "axios.get",
+          "axios.fetch",
+          "axios.find",
+          "axios.requestGet"
+        ],
+        answer: "axios.get",
+      },
 
 
-{
-  id: 6,
-  title: "6",
-  questions: [
-    {
-      text: "O hook usado para armazenar e atualizar valores dentro do componente é o _____.",
-      options: [
-        "useState",
-        "useEffect",
-        "useMemo",
-        "useReducer"
-      ],
-      answer: "useState",
-    },
-    {
-      text: "const [count, setCount] = _____(0)",
-      options: [
-        "State",
-        "useState",
-        "createState",
-        "newState"
-      ],
-      answer: "useState",
-    },
-    {
-      text: "O hook utilizado para executar efeitos colaterais, como buscar dados ou reagir a mudanças, é o _____.",
-      options: [
-        "useEffect",
-        "useState",
-        "useId",
-        "useLayoutEffect"
-      ],
-      answer: "useEffect",
-    },
-    {
-      text: `useEffect(() => {
-        console.log("Start")
-        }, ______)`,
-      options: [
-        "0",
-        "null",
-        "[]",
-        "{}"
-      ],
-      answer: "[]",
-    },
-    {
-      text: "O useState retorna um valor e uma função, normalmente chamada de _____.",
-      options: [
-        "setAlgumaCoisa",
-        "updateValue",
-        "change",
-        "modify"
-      ],
-      answer: "setAlgumaCoisa",
-    },
-    {
-      text: `useEffect(() => {
-        console.log(value)
-        }, [_____])`,
-      options: [
-        "value",
-        "'value'",
-        "{value}",
-        "[value]"
-      ],
-      answer: "value",
-    },
-    {
-      text: "Para executar um código apenas uma vez quando o componente monta, usamos useEffect com o array de dependências _____.",
-      options: [
-        "[]",
-        "[value]",
-        "[null]",
-        "[0]"
-      ],
-      answer: "[]",
-    },
-    {
-      text: `useEffect(() => {
-        fetchData()
-        }, [_____])`,
-      options: [
-        "fetchData",
-        "() => fetchData()",
-        "data",
-        "[]"
-      ],
-      answer: "[]",
-    },
-    {
-      text: "Quando queremos que o useEffect execute toda vez que uma variável mudar, colocamos essa variável no _____.",
-      options: [
-        "array de dependências",
-        "return",
-        "useState",
-        "callback"
-      ],
-      answer: "array de dependências",
-    },
-    {
-      text: "const [open, setOpen] = useSate(_____)",
-      options: [
-        "false",
-        "0",
-        "false",
-        "null"
-      ],
-      answer: "false",
-    },
-  ],
-},
-
-
-
-{
-  id: 7,
-  title: "7",
-  questions: [
-    {
-      text: "O AsyncStorage permite _____ dados no dispositivo do usuário.",
-      options: [
-        "salvar e ler",
-        "enviar para a API",
-        "desenhar elementos",
-        "compilar"
-      ],
-      answer: "salvar e ler",
-    },
-
-    {
-      text: 'awat AsyncStorage.setItem("user", _____)',
-      options: [
-        "user",
-        "{user}",
-        "JSON.stringify(user)",
-        "stringify(user)"
-      ],
-      answer: "JSON.stringify(user)",
-    },
-
-    {
-      text: "Para salvar um valor no AsyncStorage, usamos o método _____.",
-      options: [
-        "setItem",
-        "saveValue",
-        "write",
-        "store"
-      ],
-      answer: "setItem",
-    },
-
-    {
-      text: 'const data = awat AsyncStorage._____("user")',
-      options: [
-        "get",
-        "read",
-        "getItem",
-        "fetch"
-      ],
-      answer: "getItem",
-    },
-    
-    {
-      text: "Para recuperar um valor salvo no AsyncStorage, utilizamos o método _____.",
-      options: [
-        "getItem",
-        "fetch",
-        "restore",
-        "read"
-      ],
-      answer: "getItem",
-    },
-
-    {
-      text: "const obj = JSON._____(data)",
-      options: [
-        "parse",
-        "convert",
-        "json",
-        "toObject"
-      ],
-      answer: "parse",
-    },
-
-    {
-      text: "Os valores armazenados no AsyncStorage precisam estar no formato _____.",
-      options: [
-        "string",
-        "number",
-        "boolean",
-        "array"
-      ],
-      answer: "string",
-    },
-
-    {
-      text: 'import AsyncStorage from "@react-native-async-storage/____"',
-      options: [
-        "async",
-        "storage",
-        "asyncstorage",
-        "local"
-      ],
-      answer: "storage",
-    },
-
-    {
-      text: "Quando queremos apagar uma informação salva no AsyncStorage, utilizamos o _____.",
-      options: [
-        "removeItem",
-        "delete",
-        "clearValue",
-        "dropItem"
-      ],
-      answer: "removeItem",
-    },
-
-    {
-      text: "AsyncStorage._____()",
-      options: [
-        "removeAll",
-        "reset",
-        "clear",
-        "destroy"
-      ],
-      answer: "clear",
-    },
-
-  ],
-},
-
-{
-  id: 8,
-  title: "8",
-  questions: [
-    {
-      text: "O método nativo do JavaScript para fazer requisições HTTP é o _____.",
-      options: [
-        "fetch",
-        "axios",
-        "requestJS",
-        "httpRequest"
-      ],
-      answer: "fetch",
-    },
-
-    {
-      text: 'fetch("https://api.com/user").then(res => res._____())',
-      options: [
-        "parse",
-        "json",
-        "get",
-        "toJson"
-      ],
-      answer: "json",
-    },
-
-    {
-      text: "A biblioteca que facilita requisições e já retorna JSON automaticamente é o _____.",
-      options: [
-        "axios",
-        "fetch",
-        "navigator",
-        "httpLib"
-      ],
-      answer: "axios",
-    },
-
-    {
-      text: 'fetch(url, { method:"_____", body: JSON.stringify(obj) })',
-      options: [
-        "SEND",
-        "POST",
-        "SENDPOST",
-        "PUSH"
-      ],
-      answer: "POST",
-    },
-
-    {
-      text: "Com o fetch, para transformar a resposta em JSON, usamos o método _____.",
-      options: [
-        "response.json()",
-        "response.convert()",
-        "response.toJson()",
-        "response.parse()"
-      ],
-      answer: "response.json()",
-    },
-
-    {
-      text: 'headers: {"Content-Type": "application/_____" }',
-      options: [
-        "txt",
-        "json",
-        "js",
-        "data"
-      ],
-      answer: "json",
-    },
-
-    {
-      text: "Com o Axios, o corpo da resposta normalmente fica em _____.",
-      options: [
-        "response.data",
-        "response.body",
-        "response.json",
-        "response.value"
-      ],
-      answer: "response.data",
-    },
-
-    {
-      text: 'axios.get("https://api.com/user").then(res => res._____)',
-      options: [
-        "data",
-        "body",
-        "content",
-        "value"
-      ],
-      answer: "data",
-    },
-
-    {
-      text: "Para fazer uma requisição GET usando Axios, utilizamos o método _____.",
-      options: [
-        "axios.get",
-        "axios.fetch",
-        "axios.find",
-        "axios.requestGet"
-      ],
-      answer: "axios.get",
-    },
-
-
-    {
-      text: `useEffect(() => {
-        fetchData()
-        }, _____)`,
-      options: [
-        "{fetchData}",
-        "{}",
-        "[]",
-        `["fetchData"]`
-      ],
-      answer: "[]",
-    },
-  ],
-}
-
-
-
-
+      {
+        text: `useEffect(() => {
+          fetchData()
+          }, _____)`,
+        options: [
+          "{fetchData}",
+          "{}",
+          "[]",
+          `["fetchData"]`
+        ],
+        answer: "[]",
+      },
+    ],
+  }
 ];
+
+export default questions;

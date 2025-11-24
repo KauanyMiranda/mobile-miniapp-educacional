@@ -1,74 +1,90 @@
-import React, { useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Dimensions } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { useState } from "react";
+import { ScrollView } from "react-native-web";
 
-export default function QuizScreen({ route, navigation }) {
-  const { questions: phaseQuestions, phaseTitle } = route.params;
+export default function QuizScreen({ navigation, route }) {
+  const { questions, phaseTitle } = route.params;
 
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedOption, setSelectedOption] = useState(null);
-  const [isAnswered, setIsAnswered] = useState(false);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [selected, setSelected] = useState(null);
+  const [verified, setVerified] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(false);
 
-  const question = phaseQuestions[currentQuestionIndex];
+  const question = questions[currentQuestion];
 
-  const handleSelectOption = (option) => {
-    if (isAnswered) return;
-    setSelectedOption(option);
-    setIsAnswered(true);
-  };
+  const progress = (currentQuestion + 1) / questions.length; // 🔥 BARRA DE PROGRESSO
 
-  const handleContinue = () => {
-    setSelectedOption(null);
-    setIsAnswered(false);
+  function handleVerify() {
+    if (selected === null) return;
 
-    if (currentQuestionIndex + 1 < phaseQuestions.length) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    const correct = question.options[selected] === question.answer;
+    setIsCorrect(correct);
+    setVerified(true);
+  }
+
+  function handleNext() {
+    setVerified(false);
+    setSelected(null);
+
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
     } else {
-      alert(`Você concluiu a fase: ${phaseTitle}!`);
-      navigation.goBack();
+      navigation.navigate("FinishScreen", { phaseTitle });
     }
-  };
-
-  const progress = (currentQuestionIndex + 1) / phaseQuestions.length;
+  }
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.phaseText}>{phaseTitle}</Text>
+    <ScrollView style={styles.container}>
+      
+      {/* título da fase */}
+      <Text style={styles.phaseTitle}>{phaseTitle}</Text>
 
+      {/* 🔥 BARRA DE PROGRESSO */}
       <View style={styles.progressBarBackground}>
         <View style={[styles.progressBarFill, { width: `${progress * 100}%` }]} />
       </View>
 
+      {/* texto da pergunta */}
       <Text style={styles.questionText}>{question.text}</Text>
 
-      {question.options.map((option, index) => {
-        const isCorrect = option === question.answer;
-        const isSelected = option === selectedOption;
-
-        return (
-          <TouchableOpacity
-            key={index}
-            style={[
-              styles.optionButton,
-              isSelected && isCorrect && styles.correct,
-              isSelected && !isCorrect && styles.incorrect,
-            ]}
-            onPress={() => handleSelectOption(option)}
-          >
-            <Text style={styles.optionText}>{option}</Text>
-          </TouchableOpacity>
-        );
-      })}
-
-      {isAnswered && (
-        <TouchableOpacity style={styles.continueButton} onPress={handleContinue}>
-          <Text style={styles.continueText}>Continuar</Text>
+      {/* opções */}
+      {question.options.map((opt, index) => (
+        <TouchableOpacity
+          key={index}
+          style={[
+            styles.option,
+            selected === index && styles.optionSelected,
+            verified && opt === question.answer && styles.optionCorrect,
+            verified &&
+              selected === index &&
+              opt !== question.answer &&
+              styles.optionWrong,
+          ]}
+          disabled={verified}
+          onPress={() => setSelected(index)}
+        >
+          <Text style={styles.optionText}>{opt}</Text>
         </TouchableOpacity>
-      )}
+      ))}
+
+      {/* botão verificar / continuar */}
+      <TouchableOpacity
+        style={[
+          styles.verifyButton,
+          verified && !isCorrect && styles.buttonWrong,
+          verified && isCorrect && styles.buttonCorrect,
+        ]}
+        onPress={verified ? handleNext : handleVerify}
+      >
+        <Text style={styles.verifyButtonText}>
+          {verified ?  "Continuar" : "Verificar"}
+        </Text>
+      </TouchableOpacity>
     </ScrollView>
+
   );
 }
 
-const { width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   container: {
@@ -77,7 +93,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#015958",
     flexGrow: 1,
   },
-  phaseText: {
+
+  phaseTitle: {
     fontSize: 32,
     fontWeight: "900",
     color: "#fff",
@@ -85,17 +102,22 @@ const styles = StyleSheet.create({
     textAlign: "center",
     letterSpacing: 1,
   },
+
+  /* 🔥 ESTILO DA BARRA DE PROGRESSO */
   progressBarBackground: {
+    width: "100%",
     height: 12,
-    backgroundColor: "#A8E6E5",
-    borderRadius: 6,
+    backgroundColor: "#0CABA86B",
+    borderRadius: 10,
+    marginBottom: 20,
     overflow: "hidden",
-    marginBottom: 25,
   },
+
   progressBarFill: {
-    height: 12,
-    backgroundColor: "#008F8C",
+    height: "100%",
+    backgroundColor: "#0FC2C0",
   },
+
   questionText: {
     fontSize: 24,
     fontWeight: "700",
@@ -103,7 +125,8 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     textAlign: "center",
   },
-  optionButton: {
+
+  option: {
     paddingVertical: 14,
     paddingHorizontal: 10,
     backgroundColor: "#66a2a1ff",
@@ -111,25 +134,26 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.1, 
+    shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
   },
-  optionText: {
-    fontSize: 18,
-    fontWeight: "600",
-    color: "#fff",
-    textAlign: "center",
+
+  optionSelected: {
+    backgroundColor: "#d0d0d0",
   },
-  correct: {
-    backgroundColor: "#0fc25dff",
+
+  optionCorrect: {
+    backgroundColor: "#4CAF50",
   },
-  incorrect: {
-    backgroundColor: "#d42f2fff",
+
+  optionWrong: {
+    backgroundColor: "#F44336",
   },
-  continueButton: {
+
+  verifyButton: {
     marginTop: 20,
-    backgroundColor: "#0CABA8", // tom mais leve
+    backgroundColor: "#0CABA8",
     paddingVertical: 15,
     borderRadius: 16,
     alignItems: "center",
@@ -139,9 +163,19 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
     elevation: 3,
   },
-  continueText: {
-    color: "#fff",
-    fontSize: 20,
-    fontWeight: "700",
+
+  verifyButtonText: {
+    color: "#FFF",
+    textAlign: "center",
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+
+  buttonCorrect: {
+    backgroundColor: "#4CAF50",
+  },
+
+  buttonWrong: {
+    backgroundColor: "#F44336",
   },
 });
