@@ -1,18 +1,19 @@
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from "react-native";
 import { useState } from "react";
-import { ScrollView } from "react-native-web";
 
 export default function QuizScreen({ navigation, route }) {
   const { questions, phaseTitle } = route.params;
 
+  const [questionList, setQuestionList] = useState(questions);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selected, setSelected] = useState(null);
   const [verified, setVerified] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
 
-  const question = questions[currentQuestion];
+  const [wrongQuestions, setWrongQuestions] = useState([]);
 
-  const progress = (currentQuestion + 1) / questions.length; // 🔥 BARRA DE PROGRESSO
+  const question = questionList[currentQuestion];
+  const progress = (currentQuestion + 1) / questionList.length;
 
   function handleVerify() {
     if (selected === null) return;
@@ -20,34 +21,42 @@ export default function QuizScreen({ navigation, route }) {
     const correct = question.options[selected] === question.answer;
     setIsCorrect(correct);
     setVerified(true);
+
+    if (!correct) {
+      setWrongQuestions(prev => [...prev, question]);
+    }
   }
 
   function handleNext() {
     setVerified(false);
     setSelected(null);
 
-    if (currentQuestion < questions.length - 1) {
+    if (currentQuestion < questionList.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
-    } else {
-      navigation.navigate("FinishScreen", { phaseTitle });
+      return;
     }
+
+    if (wrongQuestions.length > 0) {
+      // Reinicia só com as erradas
+      setQuestionList(wrongQuestions);
+      setWrongQuestions([]);
+      setCurrentQuestion(0);
+      return;
+    }
+
+    navigation.navigate("FinishScreen", { phaseTitle });
   }
 
   return (
     <ScrollView style={styles.container}>
-      
-      {/* título da fase */}
       <Text style={styles.phaseTitle}>{phaseTitle}</Text>
 
-      {/* 🔥 BARRA DE PROGRESSO */}
       <View style={styles.progressBarBackground}>
         <View style={[styles.progressBarFill, { width: `${progress * 100}%` }]} />
       </View>
 
-      {/* texto da pergunta */}
       <Text style={styles.questionText}>{question.text}</Text>
 
-      {/* opções */}
       {question.options.map((opt, index) => (
         <TouchableOpacity
           key={index}
@@ -55,10 +64,7 @@ export default function QuizScreen({ navigation, route }) {
             styles.option,
             selected === index && styles.optionSelected,
             verified && opt === question.answer && styles.optionCorrect,
-            verified &&
-              selected === index &&
-              opt !== question.answer &&
-              styles.optionWrong,
+            verified && selected === index && opt !== question.answer && styles.optionWrong,
           ]}
           disabled={verified}
           onPress={() => setSelected(index)}
@@ -67,7 +73,6 @@ export default function QuizScreen({ navigation, route }) {
         </TouchableOpacity>
       ))}
 
-      {/* botão verificar / continuar */}
       <TouchableOpacity
         style={[
           styles.verifyButton,
@@ -77,14 +82,12 @@ export default function QuizScreen({ navigation, route }) {
         onPress={verified ? handleNext : handleVerify}
       >
         <Text style={styles.verifyButtonText}>
-          {verified ?  "Continuar" : "Verificar"}
+          {verified ? "Continuar" : "Verificar"}
         </Text>
       </TouchableOpacity>
     </ScrollView>
-
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -100,17 +103,14 @@ const styles = StyleSheet.create({
     color: "#fff",
     marginBottom: 20,
     textAlign: "center",
-    letterSpacing: 1,
   },
 
-  /* 🔥 ESTILO DA BARRA DE PROGRESSO */
   progressBarBackground: {
     width: "100%",
     height: 12,
     backgroundColor: "#0CABA86B",
     borderRadius: 10,
     marginBottom: 20,
-    overflow: "hidden",
   },
 
   progressBarFill: {
@@ -132,11 +132,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#66a2a1ff",
     borderRadius: 12,
     marginBottom: 15,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
   },
 
   optionSelected: {
@@ -157,16 +152,10 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     borderRadius: 16,
     alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    elevation: 3,
   },
 
   verifyButtonText: {
     color: "#FFF",
-    textAlign: "center",
     fontSize: 18,
     fontWeight: "bold",
   },
