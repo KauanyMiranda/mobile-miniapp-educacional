@@ -10,18 +10,22 @@ export default function LevelsScreen({ navigation }) {
 
   return (
     <ScrollView contentContainerStyle={[ styles.container, { flexGrow: 1 }]}>
+
       <View style={styles.header}>
-        <Text style={styles.title}>Níveis</Text>
         <TouchableOpacity
           style={styles.backButton}
-          onPress={() => navigation.goBack()}
+          onPress={() => navigation.navigate("Home")}
         >
           <Image 
-            source={require('../assets/home.png')}
-            style={{ width: 40, height: 40 }}
+            source={require('../assets/home2.png')}
+            style={{ width: 25, height: 25 }}
             resizeMode="contain"
           />
         </TouchableOpacity>
+
+        <Text style={styles.title}>Selecione um nível</Text>
+        
+        <View style={{ width: 45 }} />
       </View>
 
       <View style={styles.cardsContainer}>
@@ -60,21 +64,24 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 20,
     paddingTop: 20,
-    backgroundColor: '#015958',
+    backgroundColor: '#daf2f1ff',
   },
   header: {
     flexDirection: "row",
     width: "100%",
-    justifyContent: "space-between",
     alignItems: "center",
+    justifyContent: "space-between",
+    marginTop: 20,
     marginBottom: 20,
   },
   title: {
-    fontSize: 42, 
+    flex: 1,
+    fontSize: 32,
     fontWeight: "900",
-    color: '#fff',
-    letterSpacing: 1.5, 
-    textShadowColor: 'rgba(0, 0, 0, 0.3)', 
+    color: '#015958',
+    textAlign: "center",
+    letterSpacing: 1.5,
+    textShadowColor: 'rgba(0, 0, 0, 0.3)',
     textShadowOffset: { width: 2, height: 2 },
     textShadowRadius: 4,
   },
@@ -82,7 +89,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#015958",
     paddingVertical: 12,
     paddingHorizontal: 16,
-    borderRadius: 16, 
+    borderRadius: 14, 
     justifyContent: "center",
     alignItems: "center",
     shadowColor: "#000",

@@ -7,14 +7,11 @@ const questions = [
         text: `return <_____ style={{ flex: 1 }}></_____;>`,
         options: ["Div", "View", "Box", "Container"],
         answer: "View",
-        explanation: "Ta errado fi"
       },
       {
-        text: `<_____>
-          {items.map(renderItem)}
-          </_____>`,
+        text: `<_____>{items.map(renderItem)}</_____>`,
         options: ["Scroll", "ScrollContainer", "ScrollView", "ViewScroll"],
-          answer: "ScrollView",
+        answer: "ScrollView",
       },
       {
         text: `<_____ style={{ flex: 1 }}>`,
@@ -23,8 +20,8 @@ const questions = [
       },
       {
         text: `<ScrollView horizontal={_____}>`,
-        options: [`"true"`, `{true}`, `True`, `enable`],
-        answer: `{true}`
+        options: [`"true"`, `true`, `True`, `enable`],
+        answer: `true`
       },
       {
         text: `<View style={{ justifyContent: "center", _____: "center" }}>`,
@@ -45,6 +42,16 @@ const questions = [
         text: `<_____ style={{ padding: 20 }}>`,
         options: ["Box", "Section", "View", "ContainerView"],
         answer: "View"
+      },
+      {
+        text: `<View style={{ flexDirection: "_____" }}>`,
+        options: ["row", "column", "inline", "horizontal"],
+        answer: "row"
+      },
+      {
+        text: `<Text style={{ fontSize: 24, fontWeight: "_____" }}>Olá</Text>`,
+        options: ["strong", "600", "bold", "heavy"],
+        answer: "bold"
       }
     ],
   },

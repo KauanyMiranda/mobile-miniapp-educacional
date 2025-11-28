@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#0fc2bf94",
+    backgroundColor: '#daf2f1ff',
     paddingVertical: 40,
   },
   title: {
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     textShadowRadius: 4,
   },
   mainButton: {
-    backgroundColor: "#008F8C", // cor Teals-3
+    backgroundColor: "#008F8C",
     paddingVertical: 18,
     borderRadius: 20,
     marginBottom: 25,
